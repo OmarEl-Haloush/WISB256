@@ -1,5 +1,6 @@
 import time
 import sys
+import math
 # sys.argv is a list with the command-line arguments. sysv.arg[0] is the name of Python script
 print('Number of arguments:', len(sys.argv), 'arguments.')
 print('Argument List:', str(sys.argv))
@@ -14,16 +15,15 @@ while x <=n:
     x+=1
 for i in string:
     j=i
-    while i in string:
-        if i*j<=n:
-            p=i*j
+    
+    if i*j<=n and i<=math.sqrt(n):
+        p=i*j
+        if p in string:
+            string.remove(p)
             
-            if p in string:
-                string.remove(p)
-                
-            j+=1
-        else:
-            i+=1
+        j+=1
+    else:
+        i+=1
 fout=open(sys.argv[2],'w')
 i=0
 for i in string:
