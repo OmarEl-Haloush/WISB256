@@ -8,22 +8,22 @@ T1=time.perf_counter()
 N=sys.argv[1]
 file=sys.argv[2]
 n=int(N)
-string=[]
+string=list(range(2,int(N)+1))
 x=2
-while x <=n:
-    string.append(x)
-    x+=1
-for i in string:
-    j=i
-    
-    if i*j<=n and i<=math.sqrt(n):
+i=2
+j=i 
+string
+while i <=math.sqrt(n):
+    if i in string and i*j in string:
         p=i*j
-        if p in string:
-            string.remove(p)
-            
+        string.remove(p)
+        j+=1
+    elif i*j<=n:
         j+=1
     else:
+        j=2
         i+=1
+        
 fout=open(sys.argv[2],'w')
 i=0
 for i in string:
