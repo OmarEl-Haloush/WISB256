@@ -17,32 +17,29 @@ else:
         y=random.random()
         a=random.vonmisesvariate(0,0)
         endpoint1=x+L*math.cos(a)
-        endpoint2=y+L*math.sin(a)
-        if endpoint1<=((2*L)/math.pi):
-            return True
-        elif  endpoint2>=((2*L)/math.pi):
+        x1=int(x)
+        L1=math.floor(endpoint1)
+        endpoint2=y+L*math.sin(a) 
+        y1=int(y)
+        L2=int(endpoint2)
+        if L1==1 or L1==-1:# or y1>=1 or L2>=1:
             return True
         else:
             return False
+    if len(sys.argv)>3:
+        if float(sys.argv[3])>=0:
+            random.seed(int(sys.argv[3]))
+        
     while N>0:
-        try:
-            if float(sys.argv[3])>=0:
-                random.seed(sys.argv[3])
-                if dropneedle(L)==True:
-                    h+=1
-                    N-=1
-                else:
-                    N-=1
-        except:
-            if dropneedle(L)==True:
-                h+=1
-                N-=1
-            else:
-                N-=1
-    if N==0 and h>0:
-        Pi=(2*L*int(sys.argv[1]))/h
-        print(h,' hits in ', sys.argv[1], 'Tries')
-        print('Pi= ', Pi)
+        if dropneedle(L)==True:
+            h+=1
+            N-=1
+        else:
+            N-=1
+    '''if N==0 and h>0:'''
+    Pi=(float(sys.argv[1])*2*float(sys.argv[2]))/max(1, h)
+    print(h,' hits in ', sys.argv[1], 'Tries')
+    print('Pi= ', Pi)
         
         
         
