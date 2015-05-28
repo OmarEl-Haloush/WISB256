@@ -2,8 +2,6 @@ import random
 import math
 import sys
 # sys.argv is a list with the command-line arguments. sysv.arg[0] is the name of Python script
-print('Number of arguments:', len(sys.argv), 'arguments.')
-print('Argument List:', str(sys.argv))
 if len(sys.argv) <3:
     print('Use: estimate_pi.py N L')
 elif float(sys.argv[2])>1:
