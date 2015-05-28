@@ -1,10 +1,7 @@
 import math
-# f(x):
- #   f=x-1
-  #  return f
 def findRoot(f,a,b,epsilon):
     
-    m=(a+b)/2
+    m=float((a+b)/2)
     b=float(b)
     a=float(a)
     epsilon=float(epsilon)
@@ -13,7 +10,8 @@ def findRoot(f,a,b,epsilon):
      #   print('No root found')
       #  return False
     if (b-a)<=epsilon:
-        print('Error')
+        print('Error \nNo root found')
+        print(a,m,b)
         return m
     elif abs(f(a))<(epsilon*2):
         print('Found root=',"{:.2f}".format(a))
@@ -30,8 +28,6 @@ def findRoot(f,a,b,epsilon):
     elif f(b)>0.0 and f(m)<0.0: 
         return findRoot(f,m,b,epsilon)    
     else:
-        print('No root found(2)')
-
-'''root=findRoot(lambda x:x-1,0,10,0.1) 
-print(root)
-print(findRoot(lambda x:x-1,0,10,0.1))'''
+        a+=epsilon
+        b-=epsilon
+        return findRoot(f,m,b,epsilon)
