@@ -9,9 +9,9 @@ def findRoot(f,a,b,epsilon):
     #if f(a)>0 and f(b)<0:
      #   print('No root found')
       #  return False
-    if (b-a)<=epsilon:
-        print('Error \nNo root found')
-        print(a,m,b)
+    if abs(b-a)<=epsilon:
+        #print('Error \nNo root found')
+        print("{:.2f}".format(m))
         return m
     elif abs(f(a))<(epsilon*2):
         print('Found root=',"{:.2f}".format(a))
