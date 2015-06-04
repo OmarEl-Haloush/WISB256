@@ -15,7 +15,6 @@ class Vector:
             else:
                 bier=len(v)-1
                 v+=[v[bier]]
-            
         self.v1=v[0]
         self.v2=v[1]
         self.v3=v[2]    
