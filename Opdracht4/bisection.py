@@ -13,12 +13,7 @@ def findRoot(f,a,b,epsilon):
         #print('Error \nNo root found')
         print("{:.2f}".format(m))
         return m
-    elif abs(f(a))<(epsilon*2):
-        print('Found root=',"{:.2f}".format(a))
-        return a
-    elif abs(f(b))<(epsilon*2):
-        print('Found root=',"{:.2f}".format(b))
-        return b
+    
     elif f(a)<0.0 and f(m)>0.0:
         return findRoot(f,a,m,epsilon)
     elif f(b)<0.0 and f(m)>0.0: 
