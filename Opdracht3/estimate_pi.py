@@ -36,7 +36,7 @@ else:
             N-=1
     '''if N==0 and h>0:'''
     Pi=(float(sys.argv[1])*2*float(sys.argv[2]))/max(1, h)
-    print(h,' hits in', sys.argv[1], 'Tries')
+    print(h,'hits in',sys.argv[1],'tries')
     print('Pi =',Pi)
         
         
