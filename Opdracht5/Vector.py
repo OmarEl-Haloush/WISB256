@@ -35,7 +35,7 @@ class Vector:
             print('Error: Use Vector(n,v1,v2,v3): v(max)==3')'''
             
     def __str__(self):
-        return str(self.v1)+'\n'+str(self.v2)+'\n'+str(self.v3)
+        return str("{:.6f}".format(self.v1))+'\n'+str("{:.6f}".format(self.v2))+'\n'+str("{:.6f}".format(self.v3))
     def lincomb(self,other,alpha,beta):    
         new=Vector(3)
         new.v1=((self.v1*alpha)+(other.v1*beta)) 
