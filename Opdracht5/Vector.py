@@ -16,7 +16,7 @@ class Vector:
                 bier=len(v)-1
                 v+=[v[bier]]
             
-        self.v1=v[0]
+        self.v1={":6"}.format(v[0])
         self.v2=v[1]
         self.v3=v[2]    
         '''if v[0]>=0 and v[1]==0:

@@ -14,22 +14,31 @@ i=2
 j=i 
 string
 while i <=math.sqrt(n):
-    if i in string and i*j in string:
+    #if i in string: 
+    if i>=10 and j>=1000:
+        i+=1
+        j=i
+    if i*j in string:
         p=i*j
         string.remove(p)
-        j+=1
+        #if p-1>0 and p-1<len(string):
+         #   fout=open(sys.argv[2],'w')
+          #  fout.write(str(string[p-1])+'\n')
+            #fout.write('\n')
+           # fout.close()
+        j+=1    
     elif i*j<=n:
         j+=1
     else:
-        j=2
         i+=1
+        j=i
         
-fout=open(sys.argv[2],'w')
-i=0
-for i in string:
-    fout.write(str(i))
-    fout.write('\n')
+#fout=open(sys.argv[2],'w')
+#i=0
+#for i in string:
+ #   fout.write(str(i))
+ #   fout.write('\n')
  
-fout.close()
+
 T2=time.perf_counter()
 print('Time required to find',len(string),'in',T2-T1,'sec.')
