@@ -58,5 +58,56 @@ class Vector:
     def norm(self):    
         other=self
         new=math.sqrt(self.inner(other))
-        return new    
-       
+        return new
+    def minus(self,other):
+        new=Vector(len(self.v))
+        new.v=list()
+        i=0
+        while len(new.v)<len(self.v):
+            new.v.append((self.v[i]-other.v[i]))
+            i+=1
+        return new
+def GrammSchmidt(k):
+    
+    kn=list()
+    u1=k[0]
+    def proju(u,v):
+        proju1=v.inner(u)
+        proju2=u.inner(u)
+        proju3=(proju1/proju2)
+        proju4=u.scalar(proju3)
+        return proju4
+        
+    
+    def un(other,proju):
+        u2=other.minus(proju)
+        return u2    
+    i=0
+    while len(kn)<len(k[0].v):
+            if i==0:
+                new=Vector(len(k[0].v))
+                new.v=list()
+                while i>len(k[0].v):
+                    new.v.append((k[0].v[i]))
+                    i+=1
+                    print((k[0].v[i]))
+                i=1
+                print(kn)
+                kn.append(new)
+            else:
+                kn.append(un(k[i],proju(k[i-1],k[i])))
+                i+=1
+                #new=Vector(len(k[0].v))
+                #new.v=list()
+               
+                #print(new.v)
+                #kn.append(new)
+    
+    #print(u1)
+    #print(k[1])
+    #print(u2)
+    #print('Grammy')
+    #print(k[0],len(k[0].v))
+    #print(new)
+    return kn
+        
