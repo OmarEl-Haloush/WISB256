@@ -87,12 +87,15 @@ def GrammSchmidt(k):
             if i==0:
                 new=Vector(len(k[0].v))
                 new.v=list()
-                while i>len(k[0].v):
+                
+                while i<len(k[0].v):
                     new.v.append((k[0].v[i]))
+                    
+                    
+                    
                     i+=1
-                    print((k[0].v[i]))
                 i=1
-                print(kn)
+                
                 kn.append(new)
             else:
                 kn.append(un(k[i],proju(k[i-1],k[i])))
@@ -109,5 +112,24 @@ def GrammSchmidt(k):
     #print('Grammy')
     #print(k[0],len(k[0].v))
     #print(new)
-    return kn
+    j=0
+    i=0
+    kn1=list()
+    
+    while j<len(kn):
+        plen=len(kn[j].v)
+        new=Vector(len(kn[j].v))
+        new.v=list()
+        
+        
+        while i<plen:
+            
+            new.v.append(kn[j].v[i]/kn[j].norm())
+            
+            i+=1
+        j+=1
+        i=0
+        kn1.append(new)
+        
+    return kn1
         
