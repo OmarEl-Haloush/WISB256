@@ -68,7 +68,6 @@ class Vector:
             i+=1
         return new
 def GrammSchmidt(k):
-    
     kn=list()
     u1=k[0]
     def proju(u,v):
@@ -77,35 +76,26 @@ def GrammSchmidt(k):
         proju3=(proju1/proju2)
         proju4=u.scalar(proju3)
         return proju4
-        
-    
     def un(other,proju):
         u2=other.minus(proju)
         return u2    
     i=0
-    while len(kn)<len(k[0].v):
+    while len(kn)<len(k):
             if i==0:
                 new=Vector(len(k[0].v))
                 new.v=list()
-                
                 while i<len(k[0].v):
                     new.v.append((k[0].v[i]))
-                    
-                    
-                    
                     i+=1
                 i=1
-                
                 kn.append(new)
             else:
                 kn.append(un(k[i],proju(k[i-1],k[i])))
                 i+=1
                 #new=Vector(len(k[0].v))
                 #new.v=list()
-               
                 #print(new.v)
                 #kn.append(new)
-    
     #print(u1)
     #print(k[1])
     #print(u2)
@@ -115,21 +105,15 @@ def GrammSchmidt(k):
     j=0
     i=0
     kn1=list()
-    
     while j<len(kn):
         plen=len(kn[j].v)
         new=Vector(len(kn[j].v))
         new.v=list()
-        
-        
         while i<plen:
-            
             new.v.append(kn[j].v[i]/kn[j].norm())
-            
             i+=1
         j+=1
         i=0
         kn1.append(new)
-        
     return kn1
         
