@@ -31,15 +31,21 @@ class Lorenz:
             new1+=(str(' '))
         return str((new1)+'\n'+"{:.6f}".format(self.sigma)+'\n'+"{:.6f}".format(self.rho)+'\n'+"{:.6f}".format(self.beta)+'\n')
     def function(self):
-        x1_0=(self.x*(self.rho-self.z-self.y))
-        y1_0=(self.sigma*(self.y-self.x))
-        z1_0=((self.x*self.y)-self.beta*self.z)
-        print(x1_0,y1_0,z1_0)
-        return x1_0,y1_0,z1_0
-    
+        
+        xinit=[0,0]
+        yinit=[0,0]
+        zinit=[0,0]
+        
+        x=(x*(self.rho-z-y))
+        y=(self.sigma*(y-x))
+        z=((x*y)-self.beta*z)
+       
+        #print(x1_0,y1_0,z1_0)
+        #return x1_0,y1_0,z1_0
+        return (x,y,z)    
     def solve(self,T=100,dt=0.02):
         Tmax=numpy.arange(0,T,dt)
         print(Tmax)
-        opl=integrate.odeint(self.function(),self.initial,Tmax)
+        opl=integrate(self.function(),self.initial,Tmax)
         print(opl)
         return opl
