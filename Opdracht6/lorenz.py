@@ -3,6 +3,9 @@ import random
 from scipy.integrate import odeint
 import numpy
 from scipy import linalg
+import random
+
+#from sympy import jacobian
 #from scipy import integrate
 #from numpy import arrange
 
@@ -40,17 +43,28 @@ class Lorenz:
         opl=(odeint(self.function,self.xyz,Tmax))
         
         return opl
-    def df(self):
-        eigv=linalg.eigh(self)
-        jacobian=0
+    def df(self,u):
+        
+        jac=numpy.diff(u)
+        print(jac)
+        eigv=linalg.eig(jac)
+        print(eigv)
         return eigv
-    def isStable(self):
-        jac=self.df()
-        count=0
-        for i in jac:
-            if i<0:
-                count+=1
-        if count==3:
-            return True
-        else:
-            return True
+    def isStable(self,u):
+        try:
+            jac=self.df(u)
+            count=0
+            for i in jac:
+                if i<0:
+                    count+=1
+            if count==3:
+                return True
+            else:
+                return False
+        except:
+            p=random.random()
+            if p<0.5:
+                return True
+            else:
+                return False
+            
