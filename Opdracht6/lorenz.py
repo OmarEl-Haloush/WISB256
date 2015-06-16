@@ -62,5 +62,5 @@ class Lorenz:
                 return False
         except:
             
-            return True
+            return False
         
