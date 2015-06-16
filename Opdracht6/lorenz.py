@@ -1,6 +1,6 @@
 import math
 import random
-from scipy import integrate
+from scipy.integrate import odeint
 import numpy
 #from scipy import integrate
 #from numpy import arrange
@@ -13,6 +13,7 @@ class Lorenz:
         self.sigma=sigma
         self.rho=rho
         self.beta=beta
+        self.xyz=initial
         self.x=self.initial[0]
         self.y=self.initial[1]
         self.z=self.initial[2]
@@ -30,22 +31,23 @@ class Lorenz:
             new1+=str(new)
             new1+=(str(' '))
         return str((new1)+'\n'+"{:.6f}".format(self.sigma)+'\n'+"{:.6f}".format(self.rho)+'\n'+"{:.6f}".format(self.beta)+'\n')
-    def function(self):
+    def function(self,xyz,t):
+        q=[0,0,0]
         
         xinit=[0,0]
         yinit=[0,0]
         zinit=[0,0]
         
-        x=(x*(self.rho-z-y))
-        y=(self.sigma*(y-x))
-        z=((x*y)-self.beta*z)
+        q[1]=(xyz[0]*(self.rho-xyz[2]-xyz[1]))
+        q[0]=(self.sigma*(xyz[1]-xyz[0]))
+        q[2]=((xyz[0]*xyz[1])-self.beta*xyz[2])
        
         #print(x1_0,y1_0,z1_0)
         #return x1_0,y1_0,z1_0
-        return (x,y,z)    
+        return q    
     def solve(self,T=100,dt=0.02):
         Tmax=numpy.arange(0,T,dt)
-        print(Tmax)
-        opl=integrate(self.function(),self.initial,Tmax)
-        print(opl)
+        
+        opl=odeint(self.function,self.xyz,Tmax)
+        
         return opl
