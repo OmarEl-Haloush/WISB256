@@ -25,17 +25,19 @@ class Lorenz:
     def function(self,xyz,t):
         q=[0,0,0]
         q[0]=(self.sigma*(xyz[1]-xyz[0]))
-        q[1]=(xyz[0]*(self.rho-xyz[2]-xyz[1]))
-        q[2]=((xyz[0]*xyz[1])-self.beta*xyz[2])
+        q[1]=((xyz[0]*(self.rho-xyz[2]))-xyz[1])
+        q[2]=((xyz[0]*xyz[1])-(self.beta*xyz[2]))
         #print(x1_0,y1_0,z1_0)
         #return x1_0,y1_0,z1_0
-        xyz=q
+        #xyz=q
         return q
         
     def solve(self,T,dt):
         Tmax=numpy.arange(0,T,dt)
+        number=T/dt
+        Tmax1=numpy.linspace(0,T,number)
         opl1=list
-        opl=(odeint(self.function,self.xyz,Tmax))
+        opl=(odeint(self.function,self.xyz,Tmax1))
         
         return opl
     def df(self):
