@@ -46,7 +46,6 @@ class Lorenz:
     def df(self,u):
         
         jac=numpy.diff(u)
-        print(jac)
         eigv=linalg.eig(jac)
         print(eigv)
         return eigv
@@ -62,9 +61,6 @@ class Lorenz:
             else:
                 return False
         except:
-            p=random.random()
-            if p<0.5:
-                return True
-            else:
-                return False
             
+            return True
+        
