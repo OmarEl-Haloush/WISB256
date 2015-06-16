@@ -37,7 +37,7 @@ class Lorenz:
         number=T/dt
         Tmax1=numpy.linspace(0,T,number)
         opl1=list
-        opl=(odeint(self.function,self.xyz,Tmax1))
+        opl=(odeint(self.function,self.xyz,Tmax))
         
         return opl
     def df(self):
